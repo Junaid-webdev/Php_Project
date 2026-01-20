@@ -124,7 +124,7 @@ $enterPin = '1234';
 
 $username = "Musraf";
 $password = '1234';
-$role = 'admin';
+$role = 'user';
 
 $correctUser = "Musraf";
 $correctpassword = '1234';

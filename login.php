@@ -1,33 +1,58 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <form method="post">
-        Name: <input type="text"name="name"><br><br>
-        Password: <input type="password" name="password"><br><br>
-        <input type="submit" name="submit" value="Submit">
-    </form>
-    <?php
-if(isset($_POST['name'])){
-    $name = $_POST['name'];
-    $password = $_POST['password'];
+<?php
 
-    if(empty($name)){
-        echo "Please Enter Your UserName<br>";
+// Login User //
+$name = "Shyam";
+$password = 1234;
+$role = "student";
+
+$correctName = "Shyam";
+$correctPass = 1234;
+
+
+// Student Data //
+
+$age = 20;
+$marks = 79;
+$city = "Delhi";
+
+// Fess Data //
+
+$fess = 50000;
+$isScholarship = "yes";
+$coupon = "Save10";
+
+// Login Check //
+
+if(empty($name)){
+     echo "❌ Username required  <br>";
+}else if(empty($password)){
+      echo "❌ Password required  <br>";
+}else if($name != $correctName || $password != $correctPass){
+     echo "❌ Invalid credentials  <br>";
+}else{
+    if($role == "student"){
+           echo "Welcome Student $name  <br>";
     }else{
-        echo "Welcome $name<br>";
-    }
-
-    if(empty($password)){
-        echo "Please Enter Your Password";
-    }else {
-        echo "Your Password is correct";
+           echo "Welcome User $name  <br>";
     }
 }
-?>
-</body>
-</html>
+
+// Student Data //
+
+if($age >= 18 && $age <= 26 && $marks >= 60 && ($city != "Mumbai") ){
+    echo "Your Data Perfect <br>";
+}else{
+    echo "Sry Aapka data shi nhi hai  <br>";
+}
+
+if($fess >= 50000 && ($isScholarship == 'yes' || $coupon == "Save10") ){
+    $discount = $fess * 0.10;
+    $final = $fess - $discount;
+      echo "Login Successful <br>";
+      echo "Your fess discount $discount<br>";
+    echo "Welcome Student $name<br>";
+    echo "Admission Confirmed<br>";
+    echo "Final Fees: ₹$final";
+}else{
+  echo "Admission Rejected";
+}
